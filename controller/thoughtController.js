@@ -1,4 +1,5 @@
-const Thought = require('../models/thought');
+// const Thought = require('../models/thought');
+const { findOneAndUpdate } = require('../models/user');
 
 const getThoughts = async (req, res) => {
     try {
@@ -11,8 +12,8 @@ const getThoughts = async (req, res) => {
 
 const getSingleThought = async (req, res) => {
     try {
-        const thoughts = await Thought.find({ _id: req.params.id })
-        res.status(200).json(thoughts);
+        const thought = await Thought.findById(req.params.id)
+        res.status(200).json(thought);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -31,7 +32,7 @@ const updateThought = async (req, res) => {
     try {
         const result = await Thought.findOneAndUpdate(
             {_id: req.params.id},
-            {$set: { name: req.body.name, type: req.body.type}},
+            {$set: { thoughtText: req.body.thoughtText }},
             {new: true, runValidators: true}
         )
         res.status(200).json({message: "Thought has been updated!", thought: result});
@@ -49,10 +50,39 @@ const deleteThought = async (req, res) => {
     }
 }
 
+const addReaction = async (req, res) => {
+    try {
+        const result = await findOneAndUpdate(
+            {_id: req.params.id},
+            {$push: {reactions: req.body.reaction}},
+            {new: true}
+        );
+
+        res.status(500).json({message: "You've added a reaction!", thought: result})
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+const deleteReaction = async (req, res) => {
+    try {
+        const result = await findOneAndUpdate(
+            {_id: req.params.id},
+            {$pull: {reactions: {_id: req.params.reactionId}}},
+            {new: true}
+        );
+        res.status(500).json({message: "You've delete a reaction.", thought: result})
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
 module.exports = {
     getThoughts,
     getSingleThought,
     createThought,
     deleteThought,
-    updateThought
+    updateThought,
+    addReaction,
+    deleteReaction
 }

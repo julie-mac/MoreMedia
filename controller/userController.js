@@ -1,5 +1,5 @@
-const User = require('./models/user');
-const Thought = require('./models/thought')
+// const User = require('./user');
+// const Thought = require('./thought')
 
 const getUsers = async (req, res) => {
     try {
@@ -78,15 +78,15 @@ const addFriend = async (req,res) => {
         const friendId = req.params.friendId;
 
         // Updating the given user's friend list
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
+        const updatedUser = await User.findOneAndUpdate(
+            {_id: userId},
             {$push: {friends: friendId}},
             {new: true}
         );
 
         //Also adding the user to the other friend's friend list!
-        const updatedFriend = await User.findByIdAndUpdate(
-            friendId,
+        const updatedFriend = await User.findOneAndUpdate(
+            {_id: friendId},
             {$push: {friends: userId}},
             {new: true}
         );
@@ -103,13 +103,13 @@ const removeFriend = async (req,res) => {
         const friendId = req.params.friendId;
 
         const updatedUser = await User.findByIdAndUpdate(
-            userId,
+            {_id: userId},
             {$pull: {friends: friendId}},
             {new: true}
         );
         
         const updatedFriend = await User.findByIdAndUpdate(
-            friendId,
+            {_id: friendId},
             {$pull: {friends: userId}},
             {new: true}
         );
