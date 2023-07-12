@@ -12,7 +12,7 @@
   
   ## Description
 
-  More is a back-end social media application using a MongoDB database for users to post their thoughts, as well as react to other users' thoughts. You can create new Thoughts, edit or delete them, add Reactions, edit or delete those as well, and add or delete friends. You can also look up the Users and see their thoughts.
+  MoreMedia is a back-end social media application using a MongoDB database for users to post their thoughts, as well as react to other users' thoughts. You can create new Thoughts, edit or delete them, add Reactions, edit or delete those as well, and add or delete friends. You can also look up the Users and see their thoughts.
   
   ## Installation
   
