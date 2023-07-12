@@ -4,7 +4,7 @@ const User = require('./user');
 //Initializing the reactions as a subdocument of the Thought model
 const reactionSchema = new Schema({
     reactionId: {
-        type: Schema.Types.ObjectId,
+        type: String,
         default: () => new Types.ObjectId()
     },
     reactionBody: {
@@ -13,7 +13,7 @@ const reactionSchema = new Schema({
         maxLength: 280
     },
     username: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'users',
         required: true
     },
@@ -40,7 +40,7 @@ const thoughtSchema = new Schema(
             get: timestamp => formatDate(timestamp)
         },
         username: {
-            type: Schema.Types.ObjectId,
+            type: String,
             ref: 'users',
             required: true
         },
@@ -60,7 +60,7 @@ thoughtSchema.virtual('reactionCount').get(function() {
 });
 
 //Initiating the Thought schema as a model
-const Thought = model('thought', thoughtSchema);
+const Thought = model('thoughts', thoughtSchema);
 
 //Defining a function to format the date for when thoughts and reactions are posted
 function formatDate(timestamp) {

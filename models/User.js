@@ -41,9 +41,9 @@ const userSchema = new Schema(
 //Virtual for friend count!
 userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
-})
+});
 
 //Initiating the User schema as a model
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
-module.exports = User;
+module.exports = User
