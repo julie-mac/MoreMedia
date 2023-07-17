@@ -24,7 +24,6 @@
   Once you've started the server, test out the GET, POST, PUT and DELETE endpoints via Insomnia (or other interface) to view, add to or update the database. See the video below to see how it all works:
  
  [Untitled_ Jul 12, 2023 2_52 AM.webm](https://github.com/julie-mac/MoreMedia/assets/123594716/61227e0d-494d-4cbb-9b02-294199275a15)
-  https://youtu.be/o7jR6G4-_sE
 
   [Walkthrough Video](https://www.youtube.com/watch?v=o7jR6G4-_sE&ab_channel=JulieMacpherson)
   
