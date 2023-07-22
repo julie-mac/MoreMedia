@@ -28,7 +28,9 @@
   ## License
 
     This project is licensed under the MIT License.
+  
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  
   [Click here to view the MIT license](https://opensource.org/license/mit/)
   
   ## Credits
